@@ -1,0 +1,105 @@
+﻿@page
+@model PerfilesMItic.Pages.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Funcionario</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Funcionario.Id" />
+            <div class="form-group">
+                <label asp-for="Funcionario.Cedula" class="control-label"></label>
+                <input asp-for="Funcionario.Cedula" class="form-control" />
+                <span asp-validation-for="Funcionario.Cedula" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Funcionario.Nombre" class="control-label"></label>
+                <input asp-for="Funcionario.Nombre" class="form-control" />
+                <span asp-validation-for="Funcionario.Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Funcionario.Apellido" class="control-label"></label>
+                <input asp-for="Funcionario.Apellido" class="form-control" />
+                <span asp-validation-for="Funcionario.Apellido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Funcionario.JpgImagen" class="control-label"></label>
+                <input asp-for="Funcionario.JpgImagen" class="form-control" />
+                <span asp-validation-for="Funcionario.JpgImagen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Funcionario.FechaNacimiento" class="control-label"></label>
+                <input asp-for="Funcionario.FechaNacimiento" class="form-control" />
+                <span asp-validation-for="Funcionario.FechaNacimiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Funcionario.Sexo" class="control-label"></label>
+                <input asp-for="Funcionario.Sexo" class="form-control" />
+                <span asp-validation-for="Funcionario.Sexo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Funcionario.Telefono" class="control-label"></label>
+                <input asp-for="Funcionario.Telefono" class="form-control" />
+                <span asp-validation-for="Funcionario.Telefono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Funcionario.Direccion" class="control-label"></label>
+                <input asp-for="Funcionario.Direccion" class="form-control" />
+                <span asp-validation-for="Funcionario.Direccion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Funcionario.Correo" class="control-label"></label>
+                <input asp-for="Funcionario.Correo" class="form-control" />
+                <span asp-validation-for="Funcionario.Correo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Funcionario.TipoFuncionario" class="control-label"></label>
+                <input asp-for="Funcionario.TipoFuncionario" class="form-control" />
+                <span asp-validation-for="Funcionario.TipoFuncionario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Funcionario.EstadoCivil" class="control-label"></label>
+                <input asp-for="Funcionario.EstadoCivil" class="form-control" />
+                <span asp-validation-for="Funcionario.EstadoCivil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Funcionario.EmailParticular" class="control-label"></label>
+                <input asp-for="Funcionario.EmailParticular" class="form-control" />
+                <span asp-validation-for="Funcionario.EmailParticular" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Funcionario.Observaciones" class="control-label"></label>
+                <input asp-for="Funcionario.Observaciones" class="form-control" />
+                <span asp-validation-for="Funcionario.Observaciones" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Funcionario.Activo" /> @Html.DisplayNameFor(model => model.Funcionario.Activo)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Funcionario.TelefonoMovil" class="control-label"></label>
+                <input asp-for="Funcionario.TelefonoMovil" class="form-control" />
+                <span asp-validation-for="Funcionario.TelefonoMovil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
