@@ -1,0 +1,48 @@
+﻿@page
+@model PerfilesMItic.Pages.Familiares.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Familiar[0].NombreF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Familiar[0].ApellidoF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Familiar[0].TipoFamiliar)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Familiar) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApellidoF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoFamiliar)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.IdFamiliar">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.IdFamiliar">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.IdFamiliar">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

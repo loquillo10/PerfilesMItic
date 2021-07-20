@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace APPWEB.Models
+namespace PerfilesMItic.Models
 {
     public class Hijo
     {
@@ -14,5 +15,8 @@ namespace APPWEB.Models
         public string ApellidoH { get; set; }
         public DateTime? FechaNacimientoH { get; set; }
         public string cantidadHijos { get; set; }
+
+        [ForeignKey("IdFuncionario")]
+        public Funcionario Funcionario { get; set; }
     }
 }

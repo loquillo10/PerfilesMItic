@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace APPWEB.Models
+namespace PerfilesMItic.Models
 {
     
     public class Funcionario
@@ -37,25 +37,16 @@ namespace APPWEB.Models
         [MaxLength(15), MinLength(10, ErrorMessage = "Complete el Campo Con los Numeros.")]
         public string TelefonoMovil { get; set; }
 
-        //Clase Ciudad
-        [ForeignKey("IdCiudad")]
-        [Column(Order =1)]
-        public Ciudad Ciudad { get; set; }
+        public List<Pais> PaisNacimiento { get; set; }
+        public List<Ciudad> CiudadNacimiento { get; set; }
 
-        //Clase Departamento
-        [ForeignKey("IdDepartamento")]
-        [Column(Order = 2)]
-        public Departamento Departamento { get; set; }
-
-        //Clase Hijos
-        [ForeignKey("IdHijos")]
-        [Column(Order = 3)]
-        public Hijo Hijo { get; set; }
-
-        //Clase Pais
-        [ForeignKey("IdPais")]
-        [Column(Order = 4)]
-        public Pais Pais { get; set; }
+        public string Pasaporte { get; set; }
+        public string RegConducir { get; set; }
+        public string Categoria { get; set; }
+        public string RUC { get; set; }
+        public List<Ciudad> Ciudad { get; set; }
+        public List<Barrio> Barrio { get; set; }
+        public List<Departamento> Departamento { get; set; }
 
     }
 }

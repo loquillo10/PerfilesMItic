@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace APPWEB.Models
+namespace PerfilesMItic.Models
 {
     public class Conyuge
     {
@@ -17,5 +18,7 @@ namespace APPWEB.Models
         public int TelefonoC { get; set; }
         public int CelularC { get; set; }
 
+        [ForeignKey("IdFuncionario")]
+        public Funcionario Funcionario { get; set; }
     }
 }

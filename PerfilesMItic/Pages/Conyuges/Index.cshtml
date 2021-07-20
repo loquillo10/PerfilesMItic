@@ -1,0 +1,66 @@
+﻿@page
+@model PerfilesMItic.Pages.Conyuges.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Conyuge[0].NombreC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Conyuge[0].ApellidoC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Conyuge[0].SexoC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Conyuge[0].CedulaC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Conyuge[0].TelefonoC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Conyuge[0].CelularC)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Conyuge) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApellidoC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SexoC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CedulaC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TelefonoC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CelularC)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.IdConyuge">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.IdConyuge">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.IdConyuge">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

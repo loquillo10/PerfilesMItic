@@ -19,37 +19,163 @@ namespace PerfilesMItic.Migrations
                 .HasAnnotation("ProductVersion", "5.0.8")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("APPWEB.Models.Ciudad", b =>
+            modelBuilder.Entity("PerfilesMItic.Models.Barrio", b =>
+                {
+                    b.Property<int>("IdBarrio")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("FuncionarioId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NombreB")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IdBarrio");
+
+                    b.HasIndex("FuncionarioId");
+
+                    b.ToTable("Barrio");
+                });
+
+            modelBuilder.Entity("PerfilesMItic.Models.Ciudad", b =>
                 {
                     b.Property<int>("IdCiudad")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("FuncionarioId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("FuncionarioId1")
+                        .HasColumnType("int");
+
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdCiudad");
 
+                    b.HasIndex("FuncionarioId");
+
+                    b.HasIndex("FuncionarioId1");
+
                     b.ToTable("Ciudad");
                 });
 
-            modelBuilder.Entity("APPWEB.Models.Departamento", b =>
+            modelBuilder.Entity("PerfilesMItic.Models.Conyuge", b =>
+                {
+                    b.Property<int>("IdConyuge")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ApellidoC")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CedulaC")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CelularC")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("IdFuncionario")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NombreC")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SexoC")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TelefonoC")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdConyuge");
+
+                    b.HasIndex("IdFuncionario");
+
+                    b.ToTable("Conyuge");
+                });
+
+            modelBuilder.Entity("PerfilesMItic.Models.Departamento", b =>
                 {
                     b.Property<int>("IdDepartamento")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("FuncionarioId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdDepartamento");
 
+                    b.HasIndex("FuncionarioId");
+
                     b.ToTable("Departamento");
                 });
 
-            modelBuilder.Entity("APPWEB.Models.Funcionario", b =>
+            modelBuilder.Entity("PerfilesMItic.Models.Familiar", b =>
+                {
+                    b.Property<int>("IdFamiliar")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ApellidoF")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("IdFuncionario")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NombreF")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TipoFamiliar")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IdFamiliar");
+
+                    b.HasIndex("IdFuncionario");
+
+                    b.ToTable("Familiar");
+                });
+
+            modelBuilder.Entity("PerfilesMItic.Models.FuncionPublica", b =>
+                {
+                    b.Property<int>("IdFP")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("IdFuncionPublica")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ApellidoFP")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Cargo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Entidad")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("IdFuncionario")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NombreFP")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IdFP");
+
+                    b.HasIndex("IdFuncionario");
+
+                    b.ToTable("FuncionPublica");
+                });
+
+            modelBuilder.Entity("PerfilesMItic.Models.Funcionario", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -64,6 +190,9 @@ namespace PerfilesMItic.Migrations
                         .IsRequired()
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("Categoria")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Cedula")
                         .HasColumnType("int");
@@ -83,18 +212,6 @@ namespace PerfilesMItic.Migrations
                     b.Property<DateTime?>("FechaNacimiento")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("IdCiudad")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("IdDepartamento")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("IdHijos")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("IdPais")
-                        .HasColumnType("int");
-
                     b.Property<byte[]>("JpgImagen")
                         .HasColumnType("varbinary(max)")
                         .HasColumnName("Imagen");
@@ -105,6 +222,15 @@ namespace PerfilesMItic.Migrations
                         .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("Observaciones")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Pasaporte")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RUC")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RegConducir")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Sexo")
@@ -123,18 +249,10 @@ namespace PerfilesMItic.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdCiudad");
-
-                    b.HasIndex("IdDepartamento");
-
-                    b.HasIndex("IdHijos");
-
-                    b.HasIndex("IdPais");
-
                     b.ToTable("Funcionario");
                 });
 
-            modelBuilder.Entity("APPWEB.Models.Hijo", b =>
+            modelBuilder.Entity("PerfilesMItic.Models.Hijo", b =>
                 {
                     b.Property<int>("IdHijo")
                         .ValueGeneratedOnAdd()
@@ -147,6 +265,9 @@ namespace PerfilesMItic.Migrations
                     b.Property<DateTime?>("FechaNacimientoH")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("IdFuncionario")
+                        .HasColumnType("int");
+
                     b.Property<string>("NombreH")
                         .HasColumnType("nvarchar(max)");
 
@@ -155,49 +276,110 @@ namespace PerfilesMItic.Migrations
 
                     b.HasKey("IdHijo");
 
+                    b.HasIndex("IdFuncionario");
+
                     b.ToTable("Hijo");
                 });
 
-            modelBuilder.Entity("APPWEB.Models.Pais", b =>
+            modelBuilder.Entity("PerfilesMItic.Models.Pais", b =>
                 {
                     b.Property<int>("IdPais")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("FuncionarioId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdPais");
 
+                    b.HasIndex("FuncionarioId");
+
                     b.ToTable("Pais");
                 });
 
-            modelBuilder.Entity("APPWEB.Models.Funcionario", b =>
+            modelBuilder.Entity("PerfilesMItic.Models.Barrio", b =>
                 {
-                    b.HasOne("APPWEB.Models.Ciudad", "Ciudad")
-                        .WithMany()
-                        .HasForeignKey("IdCiudad");
+                    b.HasOne("PerfilesMItic.Models.Funcionario", null)
+                        .WithMany("Barrio")
+                        .HasForeignKey("FuncionarioId");
+                });
 
-                    b.HasOne("APPWEB.Models.Departamento", "Departamento")
-                        .WithMany()
-                        .HasForeignKey("IdDepartamento");
+            modelBuilder.Entity("PerfilesMItic.Models.Ciudad", b =>
+                {
+                    b.HasOne("PerfilesMItic.Models.Funcionario", null)
+                        .WithMany("Ciudad")
+                        .HasForeignKey("FuncionarioId");
 
-                    b.HasOne("APPWEB.Models.Hijo", "Hijo")
-                        .WithMany()
-                        .HasForeignKey("IdHijos");
+                    b.HasOne("PerfilesMItic.Models.Funcionario", null)
+                        .WithMany("CiudadNacimiento")
+                        .HasForeignKey("FuncionarioId1");
+                });
 
-                    b.HasOne("APPWEB.Models.Pais", "Pais")
+            modelBuilder.Entity("PerfilesMItic.Models.Conyuge", b =>
+                {
+                    b.HasOne("PerfilesMItic.Models.Funcionario", "Funcionario")
                         .WithMany()
-                        .HasForeignKey("IdPais");
+                        .HasForeignKey("IdFuncionario");
+
+                    b.Navigation("Funcionario");
+                });
+
+            modelBuilder.Entity("PerfilesMItic.Models.Departamento", b =>
+                {
+                    b.HasOne("PerfilesMItic.Models.Funcionario", null)
+                        .WithMany("Departamento")
+                        .HasForeignKey("FuncionarioId");
+                });
+
+            modelBuilder.Entity("PerfilesMItic.Models.Familiar", b =>
+                {
+                    b.HasOne("PerfilesMItic.Models.Funcionario", "Funcionario")
+                        .WithMany()
+                        .HasForeignKey("IdFuncionario");
+
+                    b.Navigation("Funcionario");
+                });
+
+            modelBuilder.Entity("PerfilesMItic.Models.FuncionPublica", b =>
+                {
+                    b.HasOne("PerfilesMItic.Models.Funcionario", "Funcionario")
+                        .WithMany()
+                        .HasForeignKey("IdFuncionario");
+
+                    b.Navigation("Funcionario");
+                });
+
+            modelBuilder.Entity("PerfilesMItic.Models.Hijo", b =>
+                {
+                    b.HasOne("PerfilesMItic.Models.Funcionario", "Funcionario")
+                        .WithMany()
+                        .HasForeignKey("IdFuncionario");
+
+                    b.Navigation("Funcionario");
+                });
+
+            modelBuilder.Entity("PerfilesMItic.Models.Pais", b =>
+                {
+                    b.HasOne("PerfilesMItic.Models.Funcionario", null)
+                        .WithMany("PaisNacimiento")
+                        .HasForeignKey("FuncionarioId");
+                });
+
+            modelBuilder.Entity("PerfilesMItic.Models.Funcionario", b =>
+                {
+                    b.Navigation("Barrio");
 
                     b.Navigation("Ciudad");
 
+                    b.Navigation("CiudadNacimiento");
+
                     b.Navigation("Departamento");
 
-                    b.Navigation("Hijo");
-
-                    b.Navigation("Pais");
+                    b.Navigation("PaisNacimiento");
                 });
 #pragma warning restore 612, 618
         }

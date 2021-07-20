@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using APPWEB.Models;
+using PerfilesMItic.Models;
 using PerfilesMItic.Data;
 
 namespace PerfilesMItic.Pages

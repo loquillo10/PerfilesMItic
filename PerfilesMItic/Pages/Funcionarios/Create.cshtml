@@ -1,19 +1,20 @@
-﻿@page
+﻿@page "/funcionarios/DatosPersonales"
 @model PerfilesMItic.Pages.CreateModel
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
 
-<h4>Funcionario</h4>
 <hr />
    
 <div class="container">
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="card">
+            <div class="card-header">
+                <h1>Datos Personales</h1>
+            </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-9 col-md-9 col-xs-12">
@@ -64,14 +65,14 @@
                             </div>
                             <div class="col-sm-6 col-md-6 col-xs-12">
                                 <div class="form-group">
-                                    <label asp-for="Funcionario.FechaNacimiento" class="control-label">Fecha de Nacimiento</label>
+                                    <label  asp-for="Funcionario.FechaNacimiento" class="control-label">Fecha de Nacimiento</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">
                                                 <i class="fa fa-calendar-alt"></i>
                                             </span>
                                         </div>
-                                        <input asp-for="Funcionario.FechaNacimiento" class="form-control" />
+                                        <input type="date" asp-for="Funcionario.FechaNacimiento" class="form-control" />
                                     </div>
                                     <span asp-validation-for="Funcionario.FechaNacimiento" class="text-danger"></span>
                                 </div>
@@ -184,60 +185,81 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-6 col-md-6 col-xs-12">
+                            <div class="col-sm-6 col-md-12 col-xs-12">
                                 <div class="form-group">
                                     <label asp-for="Funcionario.EmailParticular" class="control-label">Correo Particular</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-
+                                            <span class="input-group-text">
+                                                <i class="fa fa-envelope-open"></i>
+                                            </span>
                                         </div>
+                                       <input asp-for="Funcionario.EmailParticular" class="form-control" />
                                     </div>
-                                    <input asp-for="Funcionario.EmailParticular" class="form-control" />
                                     <span asp-validation-for="Funcionario.EmailParticular" class="text-danger"></span>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-12 col-xs-12">
+                                <div class="form-group">
+                                    <label asp-for="Funcionario.Observaciones" class="control-label">Observaciones</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fa fa-binoculars"></i>
+                                            </span>
+                                        </div>
+                                        <input asp-for="Funcionario.Observaciones" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="Funcionario.Observaciones" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6 col-xs-12">
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" asp-for="Funcionario.Activo" /> @Html.DisplayNameFor(model => model.Funcionario.Activo)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-sm-2 col-md-2 col-xs-12">
+                               <div class="form-group">
+                                    <input type="submit" value="Create" class="btn btn-outline-primary" />
+                                </div>
+                           </div>
+                           
+                        </div>
+                        @*<div class="row">
+                            <div class="col-sm-2 col-md-2 col-xs-12">
+                                <div>
+                                    <a asp-page="uncionario/Create" class="btn btn-outline-info">Regresar</a>
+                                </div>
+                            </div>
+                        </div>*@
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="Funcionario.JpgImagen" class="control-label">FOTO</label>
+                            <div class="card">
+                                <img src="~/images/default.png" id="preview" class="img-thumbnail" />
+                            </div>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                  <input type="file" class="custom-file-input" id="customFileLang" onchange="previewFile()" lang="es">
+                                  <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                                </div>
+                            </div>
+                            <span asp-validation-for="Funcionario.JpgImagen" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
-
-
-       
-        
-        
-       
-        
-       
-       
-        
-        <div class="form-group">
-            <label asp-for="Funcionario.Observaciones" class="control-label"></label>
-            <input asp-for="Funcionario.Observaciones" class="form-control" />
-            <span asp-validation-for="Funcionario.Observaciones" class="text-danger"></span>
-        </div>
-        <div class="form-group form-check">
-            <label class="form-check-label">
-                <input class="form-check-input" asp-for="Funcionario.Activo" /> @Html.DisplayNameFor(model => model.Funcionario.Activo)
-            </label>
-        </div>
-        
-        <div class="form-group">
-            <label asp-for="Funcionario.JpgImagen" class="control-label"></label>
-            <input asp-for="Funcionario.JpgImagen" class="form-control" />
-            <span asp-validation-for="Funcionario.JpgImagen" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Create" class="btn btn-primary" />
-        </div>
     </form>
-</div>
-
-<div>
-    <a asp-page="Index">Back to List</a>
 </div>
 
 @section Scripts {

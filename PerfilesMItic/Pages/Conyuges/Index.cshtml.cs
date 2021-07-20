@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using APPWEB.Models;
+using PerfilesMItic.Models;
 using PerfilesMItic.Data;
 
-namespace PerfilesMItic.Pages
+namespace PerfilesMItic.Pages.Conyuges
 {
     public class IndexModel : PageModel
     {
@@ -19,11 +19,11 @@ namespace PerfilesMItic.Pages
             _context = context;
         }
 
-        public IList<Funcionario> Funcionario { get;set; }
+        public IList<Conyuge> Conyuge { get;set; }
 
         public async Task OnGetAsync()
         {
-            Funcionario = await _context.Funcionario.ToListAsync();
+            Conyuge = await _context.Conyuge.ToListAsync();
         }
     }
 }

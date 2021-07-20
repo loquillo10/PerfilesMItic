@@ -1,0 +1,54 @@
+﻿@page
+@model PerfilesMItic.Pages.Hijos.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Hijo[0].NombreH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hijo[0].ApellidoH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hijo[0].FechaNacimientoH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hijo[0].cantidadHijos)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Hijo) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApellidoH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaNacimientoH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cantidadHijos)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.IdHijo">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.IdHijo">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.IdHijo">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

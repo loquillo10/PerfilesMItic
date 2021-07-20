@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using APPWEB.Models;
+using PerfilesMItic.Models;
 using PerfilesMItic.Data;
 
 namespace PerfilesMItic.Pages
 {
     public class CreateModel : PageModel
     {
-        private readonly PerfilesMItic.Data.PerfilesMIticContext _context;
+        private readonly PerfilesMIticContext _context;
 
-        public CreateModel(PerfilesMItic.Data.PerfilesMIticContext context)
+        public CreateModel(PerfilesMIticContext context)
         {
             _context = context;
         }
@@ -27,6 +27,7 @@ namespace PerfilesMItic.Pages
         [BindProperty]
         public Funcionario Funcionario { get; set; }
 
+
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
@@ -38,7 +39,7 @@ namespace PerfilesMItic.Pages
             _context.Funcionario.Add(Funcionario);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("");
         }
     }
 }
