@@ -11,5 +11,6 @@ namespace PerfilesMItic.Models
         [Key]
         public int IdBarrio { get; set; }
         public string NombreB { get; set; }
+
     }
 }

@@ -65,7 +65,7 @@
                             </div>
                             <div class="col-sm-6 col-md-6 col-xs-12">
                                 <div class="form-group">
-                                    <label  asp-for="Funcionario.FechaNacimiento" class="control-label">Fecha de Nacimiento</label>
+                                    <label asp-for="Funcionario.FechaNacimiento" class="control-label">Fecha de Nacimiento</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">
@@ -75,6 +75,110 @@
                                         <input type="date" asp-for="Funcionario.FechaNacimiento" class="form-control" />
                                     </div>
                                     <span asp-validation-for="Funcionario.FechaNacimiento" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label asp-for="Funcionario.Barrio">Barrio</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-globe"></i>
+                                        </span>
+                                    </div>
+                                    <select asp-for="Funcionario.Barrio" aria-label="Barrio" class="custom-select">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6 col-xs-12">
+                                <div class="form-group">
+                                    <label asp-for="Funcionario.Departamento" class="control-label">Departamento</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fa fa-building"></i>
+                                            </span>
+                                        </div>
+                                        <input asp-for="Funcionario.Departamento" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="Funcionario.Departamento" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-xs-12">
+                                <div class="form-group">
+                                    <label asp-for="Funcionario.PaisNacimiento" class="control-label">Pais de Nacimiento</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fa fa-flag"></i>
+                                            </span>
+                                        </div>
+                                        <input asp-for="Funcionario.PaisNacimiento" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="Funcionario.PaisNacimiento" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6 col-xs-12">
+                                <div class="form-group">
+                                    <label asp-for="Funcionario.Pasaporte" class="control-label">Nº de Pasaporte</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fa fa-passport"></i>
+                                            </span>
+                                        </div>
+                                        <input asp-for="Funcionario.Pasaporte" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="Funcionario.Pasaporte" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-xs-12">
+                                <div class="form-group">
+                                    <label asp-for="Funcionario.RegConducir" class="control-label">Registro De Conducir</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fa fa-id-card"></i>
+                                            </span>
+                                        </div>
+                                        <input asp-for="Funcionario.RegConducir" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="Funcionario.RegConducir" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6 col-xs-12">
+                                <div class="form-group">
+                                    <label asp-for="Funcionario.Categoria" class="control-label">Categoria</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fa fa-id-card-alt"></i>
+                                            </span>
+                                        </div>
+                                        <input asp-for="Funcionario.Categoria" class="form-control" placeholder="B, A, C, Particular" />
+                                    </div>
+                                    <span asp-validation-for="Funcionario.Categoria" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-xs-12">
+                                <div class="form-group">
+                                    <label asp-for="Funcionario.RUC" class="control-label">RUC</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fa fa-id-card"></i>
+                                            </span>
+                                        </div>
+                                        <input asp-for="Funcionario.RUC" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="Funcionario.RUC" class="text-danger"></span>
                                 </div>
                             </div>
                         </div>
@@ -194,7 +298,7 @@
                                                 <i class="fa fa-envelope-open"></i>
                                             </span>
                                         </div>
-                                       <input asp-for="Funcionario.EmailParticular" class="form-control" />
+                                        <input asp-for="Funcionario.EmailParticular" class="form-control" />
                                     </div>
                                     <span asp-validation-for="Funcionario.EmailParticular" class="text-danger"></span>
                                 </div>
@@ -226,20 +330,21 @@
                             </div>
                         </div>
                         <div class="row">
-                           <div class="col-sm-2 col-md-2 col-xs-12">
-                               <div class="form-group">
+                            <div class="col-sm-2 col-md-2 col-xs-12">
+                                <div class="form-group">
                                     <input type="submit" value="Create" class="btn btn-outline-primary" />
                                 </div>
-                           </div>
-                           
-                        </div>
-                        @*<div class="row">
-                            <div class="col-sm-2 col-md-2 col-xs-12">
-                                <div>
-                                    <a asp-page="uncionario/Create" class="btn btn-outline-info">Regresar</a>
-                                </div>
                             </div>
-                        </div>*@
+
+                        </div>
+
+                        @*<div class="row">
+            <div class="col-sm-2 col-md-2 col-xs-12">
+                <div>
+                    <a asp-page="uncionario/Create" class="btn btn-outline-info">Regresar</a>
+                </div>
+            </div>
+        </div>*@
                     </div>
                     <div class="col-sm-3 col-md-3 col-xs-12">
                         <div class="form-group">

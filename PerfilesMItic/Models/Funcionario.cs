@@ -36,17 +36,19 @@ namespace PerfilesMItic.Models
         public bool Activo { get; set; }
         [MaxLength(15), MinLength(10, ErrorMessage = "Complete el Campo Con los Numeros.")]
         public string TelefonoMovil { get; set; }
-
-        public List<Pais> PaisNacimiento { get; set; }
-        public List<Ciudad> CiudadNacimiento { get; set; }
-
         public string Pasaporte { get; set; }
         public string RegConducir { get; set; }
         public string Categoria { get; set; }
         public string RUC { get; set; }
+
+        public int IdCiudad { get; set; }
         public List<Ciudad> Ciudad { get; set; }
+        public int IdBarrio { get; set; }
         public List<Barrio> Barrio { get; set; }
+        public int IdDepartamento { get; set; }
         public List<Departamento> Departamento { get; set; }
+        public int IdPais { get; set; }
+        public List<Pais> PaisNacimiento { get; set; }
 
     }
 }

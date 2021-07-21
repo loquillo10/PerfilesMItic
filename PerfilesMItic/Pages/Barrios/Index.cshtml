@@ -1,0 +1,36 @@
+﻿@page
+@model PerfilesMItic.Pages.Barrios.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Barrio[0].NombreB)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Barrio) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreB)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.IdBarrio">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.IdBarrio">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.IdBarrio">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

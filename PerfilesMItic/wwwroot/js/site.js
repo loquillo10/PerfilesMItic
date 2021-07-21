@@ -44,11 +44,13 @@ function previewFile() {
     }
 }
 
-function contador() {
-    var cantidadHijos = document.querySelector('input');
+//function contador() {
+//    var cantidadHijos = document.querySelector('input');
 
-    document.onchange(function (e) {
+//    document.onchange(function (e) {
        
-    })
-}
+//    })
+//}
+
+
 
