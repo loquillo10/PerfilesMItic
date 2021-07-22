@@ -62,12 +62,15 @@
                                     <i class="fa fa-mix"></i>
                                 </span>
                             </div>
-                            <input asp-for="Hijo.cantidadHijos" id="cantidadHijos" class="form-control" disabled />
+                            <input asp-for="Hijo.cantidadHijos"  class="form-control" disabled />
                         </div>
                         <span asp-validation-for="Hijo.cantidadHijos" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-primary" />
+                        <input type="hidden" asp-for="@Model.Funcionario.Cedula" />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" value="Create" class="btn btn-primary">Agregar</button>
                     </div>
                 </form>
             </div>
@@ -76,9 +79,9 @@
 </div>
 
 
-<div>
+<@*div>
     <a asp-page="Index">Back to List</a>
-</div>
+</div>*@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

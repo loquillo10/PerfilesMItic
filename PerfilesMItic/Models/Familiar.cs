@@ -15,7 +15,7 @@ namespace PerfilesMItic.Models
         public string ApellidoF { get; set; }
         public string TipoFamiliar { get; set; }
 
-        [ForeignKey("IdFuncionario")]
+        public int Id { get; set; }
         public Funcionario Funcionario { get; set; }
 
     }

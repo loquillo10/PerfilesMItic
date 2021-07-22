@@ -79,16 +79,38 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="form-group">
-                                <label asp-for="Funcionario.Barrio">Barrio</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                            <i class="fa fa-globe"></i>
-                                        </span>
+                            <div class="col-sm-6 col-md-6 col-xs-12">
+                                <div class="form-group">
+                                    <label asp-for="Funcionario.Barrio">Barrio</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fa fa-globe"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="Funcionario.IdBarrio" class="form-control"
+                                                asp-items="@Model.listaBarrio">
+                                            <option value="">---Seleccionar---</option>
+                                        </select>
                                     </div>
-                                    <select asp-for="Funcionario.Barrio" aria-label="Barrio" class="custom-select">
-                                    </select>
+                                    <span asp-validation-for="Funcionario.IdBarrio" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-xs-12">
+                                <div class="form-group">
+                                    <label asp-for="Funcionario.Ciudades" class="control-label">Ciudad</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fa fa-globe"></i>
+                                            </span>
+                                        </div>
+                                       <select asp-for="Funcionario.IdCiudad" class="form-control"
+                                               asp-items="@Model.listCiudad">
+                                           <option value="">--Seleccione---</option>
+                                       </select>
+                                    </div>
+                                    <span asp-validation-for="Funcionario.Ciudades" class="text-danger"></span>
                                 </div>
                             </div>
                         </div>
@@ -102,7 +124,10 @@
                                                 <i class="fa fa-building"></i>
                                             </span>
                                         </div>
-                                        <input asp-for="Funcionario.Departamento" class="form-control" />
+                                        <select asp-for="Funcionario.IdDepartamento" class="form-control"
+                                                asp-items="@Model.listDepartamento">
+                                            <option value="">---Selecciona---</option>
+                                        </select>
                                     </div>
                                     <span asp-validation-for="Funcionario.Departamento" class="text-danger"></span>
                                 </div>
@@ -116,7 +141,10 @@
                                                 <i class="fa fa-flag"></i>
                                             </span>
                                         </div>
-                                        <input asp-for="Funcionario.PaisNacimiento" class="form-control" />
+                                        <select asp-for="Funcionario.IdPais" class="form-control"
+                                                asp-items="@Model.listPais">
+                                            <option value="">--Seleccione---</option>
+                                        </select>
                                     </div>
                                     <span asp-validation-for="Funcionario.PaisNacimiento" class="text-danger"></span>
                                 </div>
@@ -321,6 +349,20 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col-sm-10 col-md-12 col-xs-12">
+                                <div class="form-group">
+                                    <label asp-for="Funcionario.Vivienda" class="control-label">Vienda</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fa fa-house-user"></i>
+                                            </span>
+                                        </div>
+                                        <input asp-for="Funcionario.Vivienda" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="Funcionario.Vivienda" class="text-danger"></span>
+                                </div>
+                            </div>
                             <div class="col-sm-6 col-md-6 col-xs-12">
                                 <div class="form-group form-check">
                                     <label class="form-check-label">
@@ -329,13 +371,14 @@
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="row">
                             <div class="col-sm-2 col-md-2 col-xs-12">
                                 <div class="form-group">
                                     <input type="submit" value="Create" class="btn btn-outline-primary" />
                                 </div>
                             </div>
-
+                            
                         </div>
 
                         @*<div class="row">

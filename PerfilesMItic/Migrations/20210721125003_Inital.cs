@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PerfilesMItic.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class Inital : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -63,6 +63,26 @@ namespace PerfilesMItic.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Ciudad",
+                columns: table => new
+                {
+                    IdCiudad = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FuncionarioId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Ciudad", x => x.IdCiudad);
+                    table.ForeignKey(
+                        name: "FK_Ciudad_Funcionario_FuncionarioId",
+                        column: x => x.FuncionarioId,
+                        principalTable: "Funcionario",
+                        principalColumn: "IdFuncionario",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Conyuge",
                 columns: table => new
                 {
@@ -88,6 +108,26 @@ namespace PerfilesMItic.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Departamento",
+                columns: table => new
+                {
+                    IdDepartamento = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FuncionarioId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Departamento", x => x.IdDepartamento);
+                    table.ForeignKey(
+                        name: "FK_Departamento_Funcionario_FuncionarioId",
+                        column: x => x.FuncionarioId,
+                        principalTable: "Funcionario",
+                        principalColumn: "IdFuncionario",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Familiar",
                 columns: table => new
                 {
@@ -96,14 +136,15 @@ namespace PerfilesMItic.Migrations
                     NombreF = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ApellidoF = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TipoFamiliar = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IdFuncionario = table.Column<int>(type: "int", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    FuncionarioId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Familiar", x => x.IdFamiliar);
                     table.ForeignKey(
-                        name: "FK_Familiar_Funcionario_IdFuncionario",
-                        column: x => x.IdFuncionario,
+                        name: "FK_Familiar_Funcionario_FuncionarioId",
+                        column: x => x.FuncionarioId,
                         principalTable: "Funcionario",
                         principalColumn: "IdFuncionario",
                         onDelete: ReferentialAction.Restrict);
@@ -175,69 +216,10 @@ namespace PerfilesMItic.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Ciudad",
-                columns: table => new
-                {
-                    IdCiudad = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    BarioIdBarrio = table.Column<int>(type: "int", nullable: true),
-                    FuncionarioId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Ciudad", x => x.IdCiudad);
-                    table.ForeignKey(
-                        name: "FK_Ciudad_Barrio_BarioIdBarrio",
-                        column: x => x.BarioIdBarrio,
-                        principalTable: "Barrio",
-                        principalColumn: "IdBarrio",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Ciudad_Funcionario_FuncionarioId",
-                        column: x => x.FuncionarioId,
-                        principalTable: "Funcionario",
-                        principalColumn: "IdFuncionario",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Departamento",
-                columns: table => new
-                {
-                    IdDepartamento = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CiudadIdCiudad = table.Column<int>(type: "int", nullable: true),
-                    FuncionarioId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Departamento", x => x.IdDepartamento);
-                    table.ForeignKey(
-                        name: "FK_Departamento_Ciudad_CiudadIdCiudad",
-                        column: x => x.CiudadIdCiudad,
-                        principalTable: "Ciudad",
-                        principalColumn: "IdCiudad",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Departamento_Funcionario_FuncionarioId",
-                        column: x => x.FuncionarioId,
-                        principalTable: "Funcionario",
-                        principalColumn: "IdFuncionario",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_Barrio_FuncionarioId",
                 table: "Barrio",
                 column: "FuncionarioId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Ciudad_BarioIdBarrio",
-                table: "Ciudad",
-                column: "BarioIdBarrio");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ciudad_FuncionarioId",
@@ -250,19 +232,14 @@ namespace PerfilesMItic.Migrations
                 column: "IdFuncionario");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Departamento_CiudadIdCiudad",
-                table: "Departamento",
-                column: "CiudadIdCiudad");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Departamento_FuncionarioId",
                 table: "Departamento",
                 column: "FuncionarioId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Familiar_IdFuncionario",
+                name: "IX_Familiar_FuncionarioId",
                 table: "Familiar",
-                column: "IdFuncionario");
+                column: "FuncionarioId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_FuncionPublica_IdFuncionario",
@@ -283,6 +260,12 @@ namespace PerfilesMItic.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Barrio");
+
+            migrationBuilder.DropTable(
+                name: "Ciudad");
+
+            migrationBuilder.DropTable(
                 name: "Conyuge");
 
             migrationBuilder.DropTable(
@@ -299,12 +282,6 @@ namespace PerfilesMItic.Migrations
 
             migrationBuilder.DropTable(
                 name: "Pais");
-
-            migrationBuilder.DropTable(
-                name: "Ciudad");
-
-            migrationBuilder.DropTable(
-                name: "Barrio");
 
             migrationBuilder.DropTable(
                 name: "Funcionario");

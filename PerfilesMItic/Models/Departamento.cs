@@ -12,6 +12,5 @@ namespace PerfilesMItic.Models
         public int IdDepartamento { get; set; }
         public string Nombre { get; set; }
 
-        public Ciudad Ciudad { get; set; }
     }
 }

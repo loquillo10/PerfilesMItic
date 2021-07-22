@@ -13,6 +13,5 @@ namespace PerfilesMItic.Models
         public int IdCiudad { get; set; }
         public string Nombre { get; set; }
        
-        public Barrio Bario { get; set; }
     }
 }

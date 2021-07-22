@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PerfilesMItic.Data;
 
 namespace PerfilesMItic.Migrations
 {
     [DbContext(typeof(PerfilesMIticContext))]
-    partial class PerfilesMIticContextModelSnapshot : ModelSnapshot
+    [Migration("20210721125003_Inital")]
+    partial class Inital
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -255,9 +257,6 @@ namespace PerfilesMItic.Migrations
                         .HasColumnType("nvarchar(15)");
 
                     b.Property<string>("TipoFuncionario")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Vivienda")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

@@ -14,6 +14,7 @@ namespace PerfilesMItic.Models
         public string NombreH { get; set; }
         public string ApellidoH { get; set; }
         public DateTime? FechaNacimientoH { get; set; }
+        public string cedulaH { get; set; }
         public string cantidadHijos { get; set; }
 
         [ForeignKey("IdFuncionario")]

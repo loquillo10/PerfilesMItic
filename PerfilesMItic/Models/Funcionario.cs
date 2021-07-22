@@ -40,11 +40,14 @@ namespace PerfilesMItic.Models
         public string RegConducir { get; set; }
         public string Categoria { get; set; }
         public string RUC { get; set; }
+        public string Vivienda { get; set; }
 
         public int IdCiudad { get; set; }
-        public List<Ciudad> Ciudad { get; set; }
+        public List<Ciudad> Ciudades { get; set; }
+
         public int IdBarrio { get; set; }
-        public List<Barrio> Barrio { get; set; }
+        public  List<Barrio> Barrio { get; set; }
+        
         public int IdDepartamento { get; set; }
         public List<Departamento> Departamento { get; set; }
         public int IdPais { get; set; }

@@ -10,8 +10,8 @@ using PerfilesMItic.Data;
 namespace PerfilesMItic.Migrations
 {
     [DbContext(typeof(PerfilesMIticContext))]
-    [Migration("20210720231938_Inicial")]
-    partial class Inicial
+    [Migration("20210722123207_Update-Model-Funcionario")]
+    partial class UpdateModelFuncionario
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,9 +48,6 @@ namespace PerfilesMItic.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("BarioIdBarrio")
-                        .HasColumnType("int");
-
                     b.Property<int?>("FuncionarioId")
                         .HasColumnType("int");
 
@@ -58,8 +55,6 @@ namespace PerfilesMItic.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdCiudad");
-
-                    b.HasIndex("BarioIdBarrio");
 
                     b.HasIndex("FuncionarioId");
 
@@ -108,9 +103,6 @@ namespace PerfilesMItic.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CiudadIdCiudad")
-                        .HasColumnType("int");
-
                     b.Property<int?>("FuncionarioId")
                         .HasColumnType("int");
 
@@ -118,8 +110,6 @@ namespace PerfilesMItic.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdDepartamento");
-
-                    b.HasIndex("CiudadIdCiudad");
 
                     b.HasIndex("FuncionarioId");
 
@@ -136,7 +126,10 @@ namespace PerfilesMItic.Migrations
                     b.Property<string>("ApellidoF")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("IdFuncionario")
+                    b.Property<int?>("FuncionarioId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Id")
                         .HasColumnType("int");
 
                     b.Property<string>("NombreF")
@@ -147,7 +140,7 @@ namespace PerfilesMItic.Migrations
 
                     b.HasKey("IdFamiliar");
 
-                    b.HasIndex("IdFuncionario");
+                    b.HasIndex("FuncionarioId");
 
                     b.ToTable("Familiar");
                 });
@@ -266,6 +259,9 @@ namespace PerfilesMItic.Migrations
                     b.Property<string>("TipoFuncionario")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Vivienda")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Funcionario");
@@ -329,15 +325,9 @@ namespace PerfilesMItic.Migrations
 
             modelBuilder.Entity("PerfilesMItic.Models.Ciudad", b =>
                 {
-                    b.HasOne("PerfilesMItic.Models.Barrio", "Bario")
-                        .WithMany()
-                        .HasForeignKey("BarioIdBarrio");
-
                     b.HasOne("PerfilesMItic.Models.Funcionario", null)
-                        .WithMany("Ciudad")
+                        .WithMany("Ciudades")
                         .HasForeignKey("FuncionarioId");
-
-                    b.Navigation("Bario");
                 });
 
             modelBuilder.Entity("PerfilesMItic.Models.Conyuge", b =>
@@ -351,22 +341,16 @@ namespace PerfilesMItic.Migrations
 
             modelBuilder.Entity("PerfilesMItic.Models.Departamento", b =>
                 {
-                    b.HasOne("PerfilesMItic.Models.Ciudad", "Ciudad")
-                        .WithMany()
-                        .HasForeignKey("CiudadIdCiudad");
-
                     b.HasOne("PerfilesMItic.Models.Funcionario", null)
                         .WithMany("Departamento")
                         .HasForeignKey("FuncionarioId");
-
-                    b.Navigation("Ciudad");
                 });
 
             modelBuilder.Entity("PerfilesMItic.Models.Familiar", b =>
                 {
                     b.HasOne("PerfilesMItic.Models.Funcionario", "Funcionario")
                         .WithMany()
-                        .HasForeignKey("IdFuncionario");
+                        .HasForeignKey("FuncionarioId");
 
                     b.Navigation("Funcionario");
                 });
@@ -400,7 +384,7 @@ namespace PerfilesMItic.Migrations
                 {
                     b.Navigation("Barrio");
 
-                    b.Navigation("Ciudad");
+                    b.Navigation("Ciudades");
 
                     b.Navigation("Departamento");
 
