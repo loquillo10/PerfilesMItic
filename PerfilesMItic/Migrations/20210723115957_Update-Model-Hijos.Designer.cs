@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PerfilesMItic.Data;
 
 namespace PerfilesMItic.Migrations
 {
     [DbContext(typeof(PerfilesMIticContext))]
-    partial class PerfilesMIticContextModelSnapshot : ModelSnapshot
+    [Migration("20210723115957_Update-Model-Hijos")]
+    partial class UpdateModelHijos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
