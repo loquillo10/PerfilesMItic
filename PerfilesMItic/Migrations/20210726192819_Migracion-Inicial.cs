@@ -3,10 +3,78 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PerfilesMItic.Migrations
 {
-    public partial class Inital : Migration
+    public partial class MigracionInicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Administrativo",
+                columns: table => new
+                {
+                    IdAdministrativo = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Cargo_Funcion = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    Dependencia_Funcion = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    Horario = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    Interno_Telefono = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    SuperiorInmediato = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Administrativo", x => x.IdAdministrativo);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Emergencia",
+                columns: table => new
+                {
+                    IdEmergencia = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Apellido = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LineaBaja = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Celular = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Emergencia", x => x.IdEmergencia);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EstudiosRealizados",
+                columns: table => new
+                {
+                    IdEstudio = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    FechaInicio = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaFin = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Titulo = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
+                    Institucion = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    Estado = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EstudiosRealizados", x => x.IdEstudio);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ExperienciaLaboral",
+                columns: table => new
+                {
+                    IdExperiencia = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Cargo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Institucion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Horas = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ExperienciaLaboral", x => x.IdExperiencia);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Funcionario",
                 columns: table => new
@@ -32,6 +100,7 @@ namespace PerfilesMItic.Migrations
                     RegConducir = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Categoria = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RUC = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Vivienda = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IdCiudad = table.Column<int>(type: "int", nullable: false),
                     IdBarrio = table.Column<int>(type: "int", nullable: false),
                     IdDepartamento = table.Column<int>(type: "int", nullable: false),
@@ -40,6 +109,23 @@ namespace PerfilesMItic.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Funcionario", x => x.IdFuncionario);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "InfoMedica",
+                columns: table => new
+                {
+                    IdMedica = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    GrupoSanguineo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Enfermedad = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NombreSeguro = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NroCarnet = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_InfoMedica", x => x.IdMedica);
                 });
 
             migrationBuilder.CreateTable(
@@ -182,6 +268,7 @@ namespace PerfilesMItic.Migrations
                     NombreH = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ApellidoH = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FechaNacimientoH = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    cedulaH = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     cantidadHijos = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IdFuncionario = table.Column<int>(type: "int", nullable: true)
                 },
@@ -260,6 +347,9 @@ namespace PerfilesMItic.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Administrativo");
+
+            migrationBuilder.DropTable(
                 name: "Barrio");
 
             migrationBuilder.DropTable(
@@ -272,6 +362,15 @@ namespace PerfilesMItic.Migrations
                 name: "Departamento");
 
             migrationBuilder.DropTable(
+                name: "Emergencia");
+
+            migrationBuilder.DropTable(
+                name: "EstudiosRealizados");
+
+            migrationBuilder.DropTable(
+                name: "ExperienciaLaboral");
+
+            migrationBuilder.DropTable(
                 name: "Familiar");
 
             migrationBuilder.DropTable(
@@ -279,6 +378,9 @@ namespace PerfilesMItic.Migrations
 
             migrationBuilder.DropTable(
                 name: "Hijo");
+
+            migrationBuilder.DropTable(
+                name: "InfoMedica");
 
             migrationBuilder.DropTable(
                 name: "Pais");

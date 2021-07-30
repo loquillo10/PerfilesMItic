@@ -1,48 +1,80 @@
 ﻿@page
 @model PerfilesMItic.Pages.Familiares.IndexModel
-
 @{
-    ViewData["Title"] = "Index";
 }
-
-<h1>Index</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Familiar[0].NombreF)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Familiar[0].ApellidoF)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Familiar[0].TipoFamiliar)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Familiar) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreF)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ApellidoF)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipoFamiliar)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.IdFamiliar">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.IdFamiliar">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.IdFamiliar">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="container">
+    <div id="acordonar4">
+        <div class="card">
+            <div class="card-header" id="hidding4">
+                <button type="button" class="texto" data-toggle="collapse" data-target="#collapse4" aria-expanded="true" aria-controls="collapse4">
+                    Datos Familiares
+                </button>
+            </div>
+            <div id="collapse4" class="collapse show" aria-labelledby="hidding4" data-parent="#acordonar4">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-10 col-md-10 col-xs-12">
+                            <form method="post" asp-page-handler="Familiares">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="row">
+                                    <div class="col-sm-6 col-md-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label asp-for="Familiar.NombreF" class="control-label">Nombre Familiar</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="fa fa-user-alt"></i>
+                                                    </span>
+                                                </div>
+                                                <input asp-for="Familiar.NombreF" class="form-control" />
+                                            </div>
+                                            <span asp-validation-for="Familiar.NombreF" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label asp-for="Familiar.ApellidoF" class="control-label">Apellido Familiar</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="fa fa-user"></i>
+                                                    </span>
+                                                </div>
+                                                <input asp-for="Familiar.ApellidoF" class="form-control" />
+                                            </div>
+                                            <span asp-validation-for="Familiar.ApellidoF" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 col-md-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label asp-for="Familiar.TipoFamiliar" class="control-label">Relacion Familiar</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="fa fa-user-alt-slash"></i>
+                                                    </span>
+                                                </div>
+                                                <input asp-for="Familiar.TipoFamiliar" class="form-control" />
+                                            </div>
+                                            <span asp-validation-for="Familiar.TipoFamiliar" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-xs-12">
+                                        <div class="form-group">
+                                            <input type="hidden" asp-for="@Model.Funcionario.Id" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" value="Create" class="btn btn-outline-primary">Agregar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

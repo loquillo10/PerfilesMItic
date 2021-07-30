@@ -9,7 +9,7 @@ namespace PerfilesMItic.Data
 {
     public class PerfilesMIticContext : DbContext
     {
-        public PerfilesMIticContext (DbContextOptions<PerfilesMIticContext> options)
+        public PerfilesMIticContext(DbContextOptions<PerfilesMIticContext> options)
             : base(options)
         {
         }
@@ -27,5 +27,10 @@ namespace PerfilesMItic.Data
         public DbSet<Hijo> Hijo { get; set; }
         public DbSet<FuncionPublica> FuncionPublica { get; set; }
         public DbSet<Barrio> Barrio { get; set; }
+        public DbSet<EstudiosRealizados> EstudiosRealizados { get; set; }
+        public DbSet<Emergencia> Emergencia { get; set; }
+        public DbSet<InfoMedica> InfoMedica { get; set; }
+        public DbSet<ExperienciaLaboral> ExperienciaLaboral { get; set; }
+        public DbSet<Administrativo> Administrativo { get; set; }
     }
 }

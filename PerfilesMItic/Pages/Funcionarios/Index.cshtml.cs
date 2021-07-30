@@ -5,24 +5,25 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using PerfilesMItic.Models;
-using PerfilesMItic.Data;
 using Microsoft.EntityFrameworkCore;
+using PerfilesMItic.Data;
+using PerfilesMItic.Models;
 
-namespace PerfilesMItic.Pages
+namespace PerfilesMItic.Pages.Funcionarios
 {
-    public class CreateModel : PageModel
+    public class IndexModel : PageModel
     {
         private readonly PerfilesMIticContext _context;
         public SelectList listCiudad { get; set; }
         public SelectList listaBarrio { get; set; }
         public SelectList listDepartamento { get; set; }
         public SelectList listPais { get; set; }
-        public CreateModel(PerfilesMIticContext context)
+        public IndexModel(PerfilesMIticContext context)
         {
             _context = context;
         }
-        public void GetListCiudad(PerfilesMIticContext context, object selectedCiudad = null, object selectedBarrio = null , object selectedDepar = null, object selectedPais = null)
+
+        public void GetListCiudad(PerfilesMIticContext context, object selectedCiudad = null, object selectedBarrio = null, object selectedDepar = null, object selectedPais = null)
         {
             var ciudadQuery = from c in context.Ciudad
                               orderby c.Nombre
@@ -48,39 +49,29 @@ namespace PerfilesMItic.Pages
             listPais = new SelectList(paisQuery.AsNoTracking(),
                   "IdPais", "Nombre", selectedPais);
         }
+
         public IActionResult OnGet()
         {
             GetListCiudad(_context);
-            
-
-
             return Page();
-
         }
-        
+
         [BindProperty]
         public Funcionario Funcionario { get; set; }
-       
-        
+
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-       
         public async Task<IActionResult> OnPostAsync()
         {
-            
-            
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
+            
             _context.Funcionario.Add(Funcionario);
             await _context.SaveChangesAsync();
 
-           var id = _context.Funcionario.Find(Funcionario.Id);
-
-            return RedirectToPage("../Hijos/Create", id);
-
-            
+            return RedirectToPage("../Conyuges/Index");
         }
     }
 }

@@ -19,6 +19,41 @@ namespace PerfilesMItic.Migrations
                 .HasAnnotation("ProductVersion", "5.0.8")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("PerfilesMItic.Models.Administrativo", b =>
+                {
+                    b.Property<int>("IdAdministrativo")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Cargo_Funcion")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Dependencia_Funcion")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Horario")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Interno_Telefono")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("SuperiorInmediato")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.HasKey("IdAdministrativo");
+
+                    b.ToTable("Administrativo");
+                });
+
             modelBuilder.Entity("PerfilesMItic.Models.Barrio", b =>
                 {
                     b.Property<int>("IdBarrio")
@@ -112,6 +147,92 @@ namespace PerfilesMItic.Migrations
                     b.HasIndex("FuncionarioId");
 
                     b.ToTable("Departamento");
+                });
+
+            modelBuilder.Entity("PerfilesMItic.Models.Emergencia", b =>
+                {
+                    b.Property<int>("IdEmergencia")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Apellido")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Movil")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Celular");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Telefono")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("LineaBaja");
+
+                    b.HasKey("IdEmergencia");
+
+                    b.ToTable("Emergencia");
+                });
+
+            modelBuilder.Entity("PerfilesMItic.Models.EstudiosRealizados", b =>
+                {
+                    b.Property<int>("IdEstudio")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Estado")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime>("FechaFin")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaInicio")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Institucion")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Nombre")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Titulo")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.HasKey("IdEstudio");
+
+                    b.ToTable("EstudiosRealizados");
+                });
+
+            modelBuilder.Entity("PerfilesMItic.Models.ExperienciaLaboral", b =>
+                {
+                    b.Property<int>("IdExperiencia")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Cargo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Entidad")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Institucion");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("TiempoTrabajado")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("Horas");
+
+                    b.HasKey("IdExperiencia");
+
+                    b.ToTable("ExperienciaLaboral");
                 });
 
             modelBuilder.Entity("PerfilesMItic.Models.Familiar", b =>
@@ -222,9 +343,8 @@ namespace PerfilesMItic.Migrations
                     b.Property<int>("IdPais")
                         .HasColumnType("int");
 
-                    b.Property<byte[]>("JpgImagen")
-                        .HasColumnType("varbinary(max)")
-                        .HasColumnName("Imagen");
+                    b.Property<byte[]>("Imagen")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -295,6 +415,33 @@ namespace PerfilesMItic.Migrations
                     b.HasIndex("IdFuncionario");
 
                     b.ToTable("Hijo");
+                });
+
+            modelBuilder.Entity("PerfilesMItic.Models.InfoMedica", b =>
+                {
+                    b.Property<int>("IdMedica")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Enfermedad")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GrupoSanguineo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NombreSeguro")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NroCarnet")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IdMedica");
+
+                    b.ToTable("InfoMedica");
                 });
 
             modelBuilder.Entity("PerfilesMItic.Models.Pais", b =>

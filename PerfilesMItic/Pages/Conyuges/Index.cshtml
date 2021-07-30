@@ -1,66 +1,126 @@
-﻿@page
+﻿@page 
 @model PerfilesMItic.Pages.Conyuges.IndexModel
-
 @{
-    ViewData["Title"] = "Index";
 }
-
-<h1>Index</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Conyuge[0].NombreC)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Conyuge[0].ApellidoC)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Conyuge[0].SexoC)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Conyuge[0].CedulaC)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Conyuge[0].TelefonoC)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Conyuge[0].CelularC)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Conyuge) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreC)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ApellidoC)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SexoC)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CedulaC)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TelefonoC)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CelularC)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.IdConyuge">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.IdConyuge">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.IdConyuge">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="container">
+    <div id="acordonar">
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <button class="texto" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    Datos del Conyuge
+                </button>
+            </div>
+            <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#acordonar">
+                <div class="card-body">
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="col-sm-10 col-md-10 col-xs-12">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label asp-for="@Model.Conyuge.NombreC" class="control-label"> Nombre del Conyuge</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fa fa-user-alt"></i>
+                                                </span>
+                                            </div>
+                                            <input asp-for="@Model.Conyuge.NombreC" class="form-control" />
+                                        </div>
+                                        <span asp-validation-for="@Model.Conyuge.NombreC" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label asp-for="@Model.Conyuge.ApellidoC" class="control-label">Apellido del Conyuge</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fa fa-user-alt-slash"></i>
+                                                </span>
+                                            </div>
+                                            <input asp-for="@Model.Conyuge.ApellidoC" class="form-control" />
+                                        </div>
+                                        <span asp-validation-for="@Model.Conyuge.ApellidoC" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label asp-for="@Model.Conyuge.SexoC" class="control-label">Sexo del Conyuge</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fa fa-restroom"></i>
+                                                </span>
+                                            </div>
+                                            <input asp-for="@Model.Conyuge.SexoC" class="form-control" />
+                                        </div>
+                                        <span asp-validation-for="@Model.Conyuge.SexoC" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label asp-for="@Model.Conyuge.CedulaC" class="control-label">Cedula de Identidad</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fa fa-id-card"></i>
+                                                </span>
+                                            </div>
+                                            <input asp-for="@Model.Conyuge.CedulaC" class="form-control" />
+                                        </div>
+                                        <span asp-validation-for="@Model.Conyuge.CedulaC" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label asp-for="@Model.Conyuge.TelefonoC" class="control-label">Linea Baja</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fa fa-phone"></i>
+                                                </span>
+                                            </div>
+                                            <input asp-for="@Model.Conyuge.TelefonoC" class="form-control" />
+                                        </div>
+                                        <span asp-validation-for="@Model.Conyuge.TelefonoC" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label asp-for="@Model.Conyuge.CelularC" class="control-label">Telefono Móvil</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fa fa-mobile-alt"></i>
+                                                </span>
+                                            </div>
+                                            <input asp-for="@Model.Conyuge.CelularC" class="form-control" />
+                                        </div>
+                                        <span asp-validation-for="@Model.Conyuge.CelularC" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <input type="hidden" class="form-control" asp-for="@Model.Funcionario.Id"  />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 col-md-2 col-xs-12">
+                                    <div class="form-group">
+                                        <button type="submit" value="Create" class="btn btn-outline-primary">Agregar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -20,8 +20,7 @@ namespace PerfilesMItic.Models
         [MaxLength(60), Required]
         public string Apellido { get; set; }
 
-        [Column("Imagen")]
-        public byte[] JpgImagen { get; set; }
+        public byte[] Imagen { get; set; }
         public DateTime? FechaNacimiento { get; set; }
         public string Sexo { get; set; }
 
@@ -34,6 +33,7 @@ namespace PerfilesMItic.Models
         public string EmailParticular { get; set; }
         public string Observaciones { get; set; }
         public bool Activo { get; set; }
+
         [MaxLength(15), MinLength(10, ErrorMessage = "Complete el Campo Con los Numeros.")]
         public string TelefonoMovil { get; set; }
         public string Pasaporte { get; set; }
